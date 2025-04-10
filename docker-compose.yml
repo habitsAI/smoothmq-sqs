@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "9998:9998"  # UI port
+      - "9996:9996"  # UI port
       - "9997:9997"  # SQS service port
     volumes:
       - ./config.yaml:/config.yaml  # Archivo de configuración
@@ -17,7 +17,7 @@ services:
       - Q_SQS_PORT=9997
       - Q_SQS_HOST=0.0.0.0
       - Q_SQS_ENABLED=true
-      - Q_DASHBOARD_PORT=9998
+      - Q_DASHBOARD_PORT=9996
       - Q_DASHBOARD_HOST=0.0.0.0
       - Q_DASHBOARD_ENABLED=true
       - Q_SQLITE_PATH=/data/smoothmq.sqlite
