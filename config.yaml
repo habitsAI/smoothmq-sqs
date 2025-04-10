@@ -2,14 +2,16 @@
 server:
   sqs:
     enabled: true
-    port: 3001
+    port: 9997
+    host: 0.0.0.0
     keys:
-      - accesskey: DEV_ACCESS_KEY_ID
-        secretkey: DEV_SECRET_ACCESS_KEY
+      - accesskey: AKIAIOSFODNN7EXAMPLE
+        secretkey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
   dashboard:
     enabled: true
-    port: 3000
+    port: 9998
+    host: 0.0.0.0
 
   sqlite:
-    path: smoothmq.sqlite
+    path: /data/smoothmq.sqlite

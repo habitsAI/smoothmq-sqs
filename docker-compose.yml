@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  smoothmq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9998:9998"  # UI port
+      - "9997:9997"  # SQS service port
+    volumes:
+      - ./config.yaml:/config.yaml  # Archivo de configuración
+      - ./data:/data  # Para persistencia de datos
+    command: ["/usr/local/bin/run-app", "server"]
+    environment:
+      - TZ=America/Mexico_City
+      - Q_SQS_PORT=9997
+      - Q_SQS_HOST=0.0.0.0
+      - Q_SQS_ENABLED=true
+      - Q_DASHBOARD_PORT=9998
+      - Q_DASHBOARD_HOST=0.0.0.0
+      - Q_DASHBOARD_ENABLED=true
+      - Q_SQLITE_PATH=/data/smoothmq.sqlite
+      - Q_SQS_KEYS=AKIAIOSFODNN7KEY156485WEWSD:wJalrXUtnFEMI/K7MDENG/bPxRfiCYowojwshduETEFDSEWSDF43FD43RW
+    restart: unless-stopped

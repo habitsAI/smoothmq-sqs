@@ -10,5 +10,6 @@ RUN go build -v -o /run-app .
 
 FROM debian:bookworm
 
-COPY --from=builder /run-app /usr/local/bin/
-CMD ["run-app", "server"]
+COPY --from=builder /run-app /usr/local/bin/run-app
+RUN chmod +x /usr/local/bin/run-app
+CMD ["/usr/local/bin/run-app", "server"]
